@@ -21,6 +21,7 @@ EOF
 
 echo "cat pppoe-settings"
 cat /home/build/immortalwrt/files/etc/config/pppoe-settings
+
 OFFICIAL="https://downloads.immortalwrt.org"
 MIRROR="https://mirrors.sjtug.sjtu.edu.cn/immortalwrt"
 echo ">>> official failed, switching to mirror"
@@ -30,7 +31,9 @@ echo "========================================"
 echo "Updating repositories.conf"
 echo "========================================"
 sed -i "s#${OFFICIAL}#${BASE_URL}#g" repositories.conf
-cat repositories.confif [ -z "$CUSTOM_PACKAGES" ]; then
+cat repositories.conf
+
+if [ -z "$CUSTOM_PACKAGES" ]; then
   echo "⚪️ 未选择 任何第三方软件包"
 else
   # 下载 run 文件仓库
